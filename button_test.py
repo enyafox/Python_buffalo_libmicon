@@ -19,7 +19,7 @@ You can use this to build a script using that code above,
 
 import libmicon, time, os
 
-press_time=2
+press_time=0
 poll_speed=0.5 ##currently this is fast as we can reliably poll
 tickcnt=0
 
@@ -30,14 +30,7 @@ while True:
 	if state == 30:
 		tickcnt=tickcnt +1
 		if tickcnt > (press_time/poll_speed):
-			test.set_lcd_buffer(0x90,"Shutting Down!!"," ")
-			test.cmd_force_lcd_disp(libmicon.lcd_disp_buffer0)
-			test.send_write_cmd(1,libmicon.lcd_set_dispitem,0x20)
-			test.set_lcd_color(libmicon.LCD_COLOR_RED)
-			test.set_lcd_brightness(libmicon.LCD_BRIGHT_FULL)
-			test.cmd_sound(libmicon.BZ_MUSIC1)
-			test.port.close() ##if we do something other than shutdown we'd probably skip this
-			os.system('shutdown -h 0')
+			print("Function Button Pressed")
 			tickcnt=0
 
 	##reset counter if released
