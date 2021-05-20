@@ -27,7 +27,7 @@ while True:
 	test = libmicon.micon_api("/dev/ttyS1")
 	state=int.from_bytes(test.send_read_cmd(0x36),byteorder="big")
 	##if button held down start counting
-	if state == 30:
+	if state == 29:
 		tickcnt=tickcnt +1
 		if tickcnt > (press_time/poll_speed):
 			print("Function Button Pressed")
